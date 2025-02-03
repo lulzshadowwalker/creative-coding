@@ -11,7 +11,7 @@ export default {
             class="w-full border rounded-2xl"
             loading="lazy"
             :src="example.iframe"
-            style="aspect-ratio: 2.66667 / 1"
+            style="aspect-ratio: 2.2 / 1"
         ></iframe>
     </section>
     `

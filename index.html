@@ -27,7 +27,7 @@
 
     const app = {
       data() {
-        const chapters = [
+        let chapters = [
           {
             name: "Chapter 0: Randomness",
             examples: [
@@ -90,10 +90,26 @@
               {
                 name: 'Vector Normalization',
                 iframe: 'https://editor.p5js.org/lulzie/full/wBLmBFw7y',
-              }
+              },
+              {
+                name: 'Color Wheel',
+                note: 'Just playing around, not part of the natureofcode book',
+                natureofcode: false,
+                iframe: 'https://editor.p5js.org/lulzie/full/G__2ciGaK',
+              },
+              {
+                name: 'Liquid Sky',
+                natureofcode: false,
+                iframe: 'https://editor.p5js.org/lulzie/full/LU8bwxHD7',
+              },
             ],
           },
         ];
+
+        chapters = chapters.reverse();
+        for (let chapter of chapters) {
+          chapter.examples = chapter.examples.reverse();
+        }
 
         return {chapters};
       },
