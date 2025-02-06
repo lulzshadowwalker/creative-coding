@@ -16,18 +16,16 @@
       <h1 class="text-3xl font-semibold">🤔 whatshouldinamethis</h1>
     </header>
 
-    <!-- Loop over days (most recent day will appear first) -->
-    <day-component v-for="day in days" :key="day.title" :title="day.title" :examples="day.examples" />
+    <day-component v-for="day in days" :key="day.title" :title="day.title" :examples="day.examples"
+      @load-iframe="loadIFrame" />
   </div>
 
   <script type="module">
-    import DayComponent from "./chapter.js"; // still the same file
+    import DayComponent from "./chapter.js";
     const {createApp} = Vue;
 
     const app = {
       data() {
-        // Build a days array.
-        // (You can update these objects whenever you want to add a new day.)
         let days = [
           {
             title: "Day 0",
@@ -160,6 +158,39 @@
                 iframe: 'https://editor.p5js.org/lulzie/full/srwu1ImV0',
               }
             ],
+          },
+          {
+            title: 'Day 5',
+            examples: [
+              {
+                name: 'Friction and Inelastic Bounce',
+                iframe: 'https://editor.p5js.org/lulzie/full/-I_xkmzFU',
+              },
+              {
+                name: 'Drowning Fish',
+                iframe: 'https://editor.p5js.org/lulzie/full/CCdPFE7qI',
+              },
+              {
+                name: 'Attraction',
+                iframe: 'https://editor.p5js.org/lulzie/full/w3wx9LyF_',
+              },
+              {
+                name: 'Nihao',
+                iframe: 'https://editor.p5js.org/lulzie/full/i9nzJ5Sml',
+              },
+              {
+                name: 'N-Bodies',
+                iframe: 'https://editor.p5js.org/lulzie/full/aTUq_xdiX',
+              },
+              {
+                name: 'Solar 2',
+                iframe: 'https://editor.p5js.org/lulzie/full/P7p-XQQw3',
+              },
+              {
+                name: 'Solar 1',
+                iframe: 'https://editor.p5js.org/lulzie/full/NE9OuRfZB',
+              },
+            ],
           }
         ];
 
@@ -169,9 +200,21 @@
           day.examples = day.examples.reverse();
         }
 
-        return {days};
+        let activeFrame = null;
+
+        return {days, activeFrame};
+      },
+      methods: {
+        loadIFrame(iframe) {
+          this.activeFrame = iframe;
+        },
       },
       components: {"day-component": DayComponent},
+      provide() {
+        return {
+          activeFrame: Vue.computed(() => this.activeFrame),
+        };
+      },
     };
 
     createApp(app).mount("#app");

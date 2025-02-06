@@ -1,15 +1,16 @@
 const ExampleCard = {
+  inject: ['activeFrame'],
   props: {
     example: Object,
   },
-  data() {
-    return {
-      loaded: false,
-    };
+  computed: {
+    loaded() {
+      return this.activeFrame === this.example.iframe;
+    },
   },
   methods: {
     loadIframe() {
-      this.loaded = true;
+      this.$emit('load-iframe', this.example.iframe);
     },
   },
   template: `
@@ -32,11 +33,16 @@ const ExampleCard = {
 
 export default {
   props: {
-    title: String,        // e.g., "Day 3: Forces"
-    examples: Array,      // each example is { name: String, iframe: String }
+    title: String,
+    examples: Array,
   },
   components: {
     ExampleCard,
+  },
+  methods: {
+    loadIFrame(iframe) {
+      this.$emit('load-iframe', iframe);
+    },
   },
   template: `
     <section class="space-y-4 mb-12">
@@ -44,6 +50,7 @@ export default {
       <div class="grid grid-cols-1 gap-4">
         <example-card 
           v-for="example in examples" 
+          @load-iframe="$emit('load-iframe', $event)"
           :key="example.name" 
           :example="example" />
       </div>
