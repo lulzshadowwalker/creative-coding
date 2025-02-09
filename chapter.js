@@ -48,6 +48,12 @@ export default {
     <section class="space-y-4 mb-12">
       <h2 class="text-3xl font-bold tracking-wide mb-8">{{ title }}</h2>
       <div class="grid grid-cols-1 gap-4">
+        <div v-if="!examples.length" 
+            class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl p-4"
+            @click="loadIframe">
+            <h3 class="text-xl font-semibold mb-2 text-italic">Nothing to see here 🤷🏻‍♀️</h3>
+        </div>
+
         <example-card 
           v-for="example in examples" 
           @load-iframe="$emit('load-iframe', $event)"
