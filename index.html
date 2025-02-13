@@ -1,298 +1,328 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Creative Coding</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-    <link rel="icon" href="/favicon.ico" type="image/x-icon" />
-  </head>
 
-  <body class="max-w-screen-lg mx-auto mb-8 px-8">
-    <div id="app">
-      <header class="my-4">
-        <h1 class="text-3xl font-semibold">
-          Not Creative Enough to Come Up With a Name
-        </h1>
-      </header>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creative Coding</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon" />
+</head>
 
-      <day-component
-        v-for="day in days"
-        :key="day.title"
-        :title="day.title"
-        :examples="day.examples"
-        @load-iframe="loadIFrame"
-      />
-    </div>
+<body class="max-w-screen-lg mx-auto mb-8 px-8">
+  <div id="app">
+    <header class="my-4">
+      <h1 class="text-3xl font-semibold">
+        Not Creative Enough to Come Up With a Name
+      </h1>
+    </header>
 
-    <script type="module">
-      import DayComponent from "./chapter.js";
-      const { createApp } = Vue;
+    <day-component v-for="day in days" :key="day.title" :title="day.title" :examples="day.examples"
+      @load-iframe="loadIFrame" />
+  </div>
 
-      const app = {
-        data() {
-          let days = [
-            {
-              title: "Day 0",
-              examples: [
-                {
-                  name: "Random Walker",
-                  iframe: "https://editor.p5js.org/lulzie/full/aDaDv-CP3",
-                },
-                {
-                  name: "Uniform Random Number Distribution",
-                  iframe: "https://editor.p5js.org/lulzie/full/52u3sRS-5",
-                },
-                {
-                  name: "Normal Distribution",
-                  iframe: "https://editor.p5js.org/lulzie/full/KwtX_6PTT",
-                },
-                {
-                  name: "Accept-Reject Distribution",
-                  iframe: "https://editor.p5js.org/lulzie/full/SJUwxyIKl",
-                },
-                {
-                  name: "Perlin Noise",
-                  iframe: "https://editor.p5js.org/lulzie/full/GQpxnD6J9",
-                },
-                {
-                  name: "Noise Cloud",
-                  iframe: "https://editor.p5js.org/lulzie/full/ZOCyq0R2C",
-                },
-              ],
-            },
-            {
-              title: "Day 1",
-              examples: [
-                {
-                  name: "Bouncing Ball with No Vectors",
-                  iframe: "https://editor.p5js.org/lulzie/full/w2hRIu0Kv",
-                },
-                {
-                  name: "Bouncing Ball with Vectors",
-                  iframe: "https://editor.p5js.org/lulzie/full/iMONq6od0",
-                },
-                {
-                  name: "Vector Subtraction",
-                  iframe: "https://editor.p5js.org/lulzie/full/hwRK3DA8_",
-                },
-                {
-                  name: "Vector Multiplication",
-                  iframe: "https://editor.p5js.org/lulzie/full/9l7lCO5K_",
-                },
-                {
-                  name: "Vector Magnitude",
-                  iframe: "https://editor.p5js.org/lulzie/full/eu5DlCyLj",
-                },
-                {
-                  name: "Vector Normalization",
-                  iframe: "https://editor.p5js.org/lulzie/full/wBLmBFw7y",
-                },
-              ],
-            },
-            {
-              title: "Day 2",
-              examples: [
-                {
-                  name: "Mover",
-                  iframe: "https://editor.p5js.org/lulzie/full/9t-y-b5nh",
-                },
-                {
-                  name: "Color Wheel",
-                  note: "Just playing around, not part of the natureofcode book",
-                  iframe: "https://editor.p5js.org/lulzie/full/G__2ciGaK",
-                },
-                {
-                  name: "Liquid Sky",
-                  iframe: "https://editor.p5js.org/lulzie/full/LU8bwxHD7",
-                },
-              ],
-            },
-            {
-              title: "Day 3",
-              examples: [
-                {
-                  name: "Baboon",
-                  iframe: "https://editor.p5js.org/lulzie/full/0jU_0-L0p",
-                },
-                {
-                  name: "Fractals 3",
-                  iframe: "https://editor.p5js.org/lulzie/full/tTS_cyfDE",
-                },
-                {
-                  name: "Fractals 2",
-                  iframe: "https://editor.p5js.org/lulzie/full/nmnP9Et_v",
-                },
-                {
-                  name: "Fractals 1",
-                  iframe: "https://editor.p5js.org/lulzie/full/9fbNaU6_P",
-                },
-              ],
-            },
-            {
-              title: "Day 4",
-              examples: [
-                {
-                  name: "Fan 🌬️",
-                  iframe: "https://editor.p5js.org/lulzie/full/LgtVfhZsw",
-                },
-                {
-                  name: "Pixel World",
-                  iframe: "https://editor.p5js.org/lulzie/full/a3MlYCvds",
-                },
-                {
-                  name: "yes or yes",
-                  iframe: "https://editor.p5js.org/lulzie/full/srwu1ImV0",
-                },
-              ],
-            },
-            {
-              title: "Day 5",
-              examples: [
-                {
-                  name: "Friction and Inelastic Bounce",
-                  iframe: "https://editor.p5js.org/lulzie/full/-I_xkmzFU",
-                },
-                {
-                  name: "Drowning Fish",
-                  iframe: "https://editor.p5js.org/lulzie/full/CCdPFE7qI",
-                },
-                {
-                  name: "Attraction",
-                  iframe: "https://editor.p5js.org/lulzie/full/w3wx9LyF_",
-                },
-                {
-                  name: "Nihao",
-                  iframe: "https://editor.p5js.org/lulzie/full/i9nzJ5Sml",
-                },
-                {
-                  name: "N-Bodies",
-                  iframe: "https://editor.p5js.org/lulzie/full/aTUq_xdiX",
-                },
-                {
-                  name: "Solar 2",
-                  iframe: "https://editor.p5js.org/lulzie/full/P7p-XQQw3",
-                },
-                {
-                  name: "Solar 1",
-                  iframe: "https://editor.p5js.org/lulzie/full/NE9OuRfZB",
-                },
-              ],
-            },
-            {
-              title: "Day 6",
-              examples: [
-                {
-                  name: "Angle Motion 101",
-                  iframe: "https://editor.p5js.org/lulzie/full/owdgS7CLu",
-                },
-                {
-                  name: '"Forces with (Arbitrary) Angular Motion"',
-                  iframe: "https://editor.p5js.org/lulzie/full/R3Z6_WgGH",
-                },
-              ],
-            },
-            {
-              // none
-              title: "Day 7",
-              examples: [],
-            },
-            {
-              title: "Day 8",
-              examples: [
-                {
-                  name: "Pet Ball",
-                  iframe: "https://editor.p5js.org/lulzie/full/JnmTiALGT",
-                },
-                {
-                  name: "Fake Flock",
-                  iframe: "https://editor.p5js.org/lulzie/full/KK_Q62C30",
-                },
-                {
-                  name: "Polar Bear 1",
-                  iframe: "https://editor.p5js.org/lulzie/full/Lv1Qxs3bQ",
-                },
-                {
-                  name: "Polar Bear 2",
-                  iframe: "https://editor.p5js.org/lulzie/full/a_vyPYnsN",
-                },
-              ],
-            },
-            {
-              title: "Day 9",
-              examples: [
-                {
-                  name: "Saw 1",
-                  iframe: "https://editor.p5js.org/lulzie/full/smZI57Zm-",
-                },
-                {
-                  name: "Saw 2 (Different Implementation)",
-                  iframe: "https://editor.p5js.org/lulzie/full/Gar7R4seD",
-                },
-                {
-                  name: "Simple Harmonic Motion",
-                  iframe: "https://editor.p5js.org/lulzie/full/GMQ2uOxR0",
-                },
-                {
-                  name: "Welcome, Oscillator",
-                  iframe: "https://editor.p5js.org/lulzie/full/0Fuao_gNs",
-                },
-                {
-                  name: "Wave",
-                  iframe: "https://editor.p5js.org/lulzie/full/zCF1XhXn_",
-                },
-              ],
-            },
-            {
-              title: "Day 10",
-              examples: [
-                {
-                  name: "Spring is Coming",
-                  iframe: "https://editor.p5js.org/lulzie/full/fE7VQZdZa",
-                },
-                {
-                  name: "Additive Wave",
-                  iframe: "https://editor.p5js.org/lulzie/full/PjAs6KwJR",
-                },
-              ],
-            },
-            {
-              title: 'Day 11',
-              examples: [
-                {
-                  name: 'Weave',
-                  iframe: 'https://editor.p5js.org/lulzie/full/66wiEi2uX'
-                }
-              ],
-            }
-          ];
+  <script type="module">
+    import DayComponent from "./chapter.js";
+    const {createApp} = Vue;
 
-          let count = 0;
-          days = days.reverse();
-
-          for (const day of days) {
-            day.examples = day.examples.reverse();
-          }
-
-          let activeFrame = null;
-
-          return { days, activeFrame };
-        },
-        methods: {
-          loadIFrame(iframe) {
-            this.activeFrame = iframe;
+    const app = {
+      data() {
+        let days = [
+          {
+            title: "Day 0",
+            examples: [
+              {
+                name: "Random Walker",
+                iframe: "https://editor.p5js.org/lulzie/full/aDaDv-CP3",
+              },
+              {
+                name: "Uniform Random Number Distribution",
+                iframe: "https://editor.p5js.org/lulzie/full/52u3sRS-5",
+              },
+              {
+                name: "Normal Distribution",
+                iframe: "https://editor.p5js.org/lulzie/full/KwtX_6PTT",
+              },
+              {
+                name: "Accept-Reject Distribution",
+                iframe: "https://editor.p5js.org/lulzie/full/SJUwxyIKl",
+              },
+              {
+                name: "Perlin Noise",
+                iframe: "https://editor.p5js.org/lulzie/full/GQpxnD6J9",
+              },
+              {
+                name: "Noise Cloud",
+                iframe: "https://editor.p5js.org/lulzie/full/ZOCyq0R2C",
+              },
+            ],
           },
-        },
-        components: { "day-component": DayComponent },
-        provide() {
-          return {
-            activeFrame: Vue.computed(() => this.activeFrame),
-          };
-        },
-      };
+          {
+            title: "Day 1",
+            examples: [
+              {
+                name: "Bouncing Ball with No Vectors",
+                iframe: "https://editor.p5js.org/lulzie/full/w2hRIu0Kv",
+              },
+              {
+                name: "Bouncing Ball with Vectors",
+                iframe: "https://editor.p5js.org/lulzie/full/iMONq6od0",
+              },
+              {
+                name: "Vector Subtraction",
+                iframe: "https://editor.p5js.org/lulzie/full/hwRK3DA8_",
+              },
+              {
+                name: "Vector Multiplication",
+                iframe: "https://editor.p5js.org/lulzie/full/9l7lCO5K_",
+              },
+              {
+                name: "Vector Magnitude",
+                iframe: "https://editor.p5js.org/lulzie/full/eu5DlCyLj",
+              },
+              {
+                name: "Vector Normalization",
+                iframe: "https://editor.p5js.org/lulzie/full/wBLmBFw7y",
+              },
+            ],
+          },
+          {
+            title: "Day 2",
+            examples: [
+              {
+                name: "Mover",
+                iframe: "https://editor.p5js.org/lulzie/full/9t-y-b5nh",
+              },
+              {
+                name: "Color Wheel",
+                note: "Just playing around, not part of the natureofcode book",
+                iframe: "https://editor.p5js.org/lulzie/full/G__2ciGaK",
+              },
+              {
+                name: "Liquid Sky",
+                iframe: "https://editor.p5js.org/lulzie/full/LU8bwxHD7",
+              },
+            ],
+          },
+          {
+            title: "Day 3",
+            examples: [
+              {
+                name: "Baboon",
+                iframe: "https://editor.p5js.org/lulzie/full/0jU_0-L0p",
+              },
+              {
+                name: "Fractals 3",
+                iframe: "https://editor.p5js.org/lulzie/full/tTS_cyfDE",
+              },
+              {
+                name: "Fractals 2",
+                iframe: "https://editor.p5js.org/lulzie/full/nmnP9Et_v",
+              },
+              {
+                name: "Fractals 1",
+                iframe: "https://editor.p5js.org/lulzie/full/9fbNaU6_P",
+              },
+            ],
+          },
+          {
+            title: "Day 4",
+            examples: [
+              {
+                name: "Fan 🌬️",
+                iframe: "https://editor.p5js.org/lulzie/full/LgtVfhZsw",
+              },
+              {
+                name: "Pixel World",
+                iframe: "https://editor.p5js.org/lulzie/full/a3MlYCvds",
+              },
+              {
+                name: "yes or yes",
+                iframe: "https://editor.p5js.org/lulzie/full/srwu1ImV0",
+              },
+            ],
+          },
+          {
+            title: "Day 5",
+            examples: [
+              {
+                name: "Friction and Inelastic Bounce",
+                iframe: "https://editor.p5js.org/lulzie/full/-I_xkmzFU",
+              },
+              {
+                name: "Drowning Fish",
+                iframe: "https://editor.p5js.org/lulzie/full/CCdPFE7qI",
+              },
+              {
+                name: "Attraction",
+                iframe: "https://editor.p5js.org/lulzie/full/w3wx9LyF_",
+              },
+              {
+                name: "Nihao",
+                iframe: "https://editor.p5js.org/lulzie/full/i9nzJ5Sml",
+              },
+              {
+                name: "N-Bodies",
+                iframe: "https://editor.p5js.org/lulzie/full/aTUq_xdiX",
+              },
+              {
+                name: "Solar 2",
+                iframe: "https://editor.p5js.org/lulzie/full/P7p-XQQw3",
+              },
+              {
+                name: "Solar 1",
+                iframe: "https://editor.p5js.org/lulzie/full/NE9OuRfZB",
+              },
+            ],
+          },
+          {
+            title: "Day 6",
+            examples: [
+              {
+                name: "Angle Motion 101",
+                iframe: "https://editor.p5js.org/lulzie/full/owdgS7CLu",
+              },
+              {
+                name: '"Forces with (Arbitrary) Angular Motion"',
+                iframe: "https://editor.p5js.org/lulzie/full/R3Z6_WgGH",
+              },
+            ],
+          },
+          {
+            // none
+            title: "Day 7",
+            examples: [],
+          },
+          {
+            title: "Day 8",
+            examples: [
+              {
+                name: "Pet Ball",
+                iframe: "https://editor.p5js.org/lulzie/full/JnmTiALGT",
+              },
+              {
+                name: "Fake Flock",
+                iframe: "https://editor.p5js.org/lulzie/full/KK_Q62C30",
+              },
+              {
+                name: "Polar Bear 1",
+                iframe: "https://editor.p5js.org/lulzie/full/Lv1Qxs3bQ",
+              },
+              {
+                name: "Polar Bear 2",
+                iframe: "https://editor.p5js.org/lulzie/full/a_vyPYnsN",
+              },
+            ],
+          },
+          {
+            title: "Day 9",
+            examples: [
+              {
+                name: "Saw 1",
+                iframe: "https://editor.p5js.org/lulzie/full/smZI57Zm-",
+              },
+              {
+                name: "Saw 2 (Different Implementation)",
+                iframe: "https://editor.p5js.org/lulzie/full/Gar7R4seD",
+              },
+              {
+                name: "Simple Harmonic Motion",
+                iframe: "https://editor.p5js.org/lulzie/full/GMQ2uOxR0",
+              },
+              {
+                name: "Welcome, Oscillator",
+                iframe: "https://editor.p5js.org/lulzie/full/0Fuao_gNs",
+              },
+              {
+                name: "Wave",
+                iframe: "https://editor.p5js.org/lulzie/full/zCF1XhXn_",
+              },
+            ],
+          },
+          {
+            title: "Day 10",
+            examples: [
+              {
+                name: "Spring is Coming",
+                iframe: "https://editor.p5js.org/lulzie/full/fE7VQZdZa",
+              },
+              {
+                name: "Additive Wave",
+                iframe: "https://editor.p5js.org/lulzie/full/PjAs6KwJR",
+              },
+            ],
+          },
+          {
+            title: 'Day 11',
+            examples: [
+              {
+                name: 'Weave',
+                iframe: 'https://editor.p5js.org/lulzie/full/66wiEi2uX'
+              }
+            ],
+          },
+          {
+            title: 'Day 12',
+            examples: [
+              {
+                name: 'Welcome, Particle System!',
+                iframe: 'https://editor.p5js.org/lulzie/full/e62bdPTBB',
+              },
+              {
+                name: 'Welcome, Emitters!',
+                ifrmae: 'https://editor.p5js.org/lulzie/full/q74XDsLN5',
+              },
+              {
+                name: 'System of Emitters',
+                iframe: 'https://editor.p5js.org/lulzie/full/X8ml-d9oj',
+              },
+              {
+                name: 'Confetti',
+                iframe: 'https://editor.p5js.org/lulzie/full/QXbzYJmRp',
+              },
+              {
+                name: 'Textures',
+                iframe: 'https://editor.p5js.org/lulzie/full/gyajs2hwp',
+              },
+              {
+                name: 'Textures with Lightest Blending',
+                iframe: 'https://editor.p5js.org/lulzie/full/zyN9_bIMi',
+              },
+              {
+                name: 'Textures with Additive Blending',
+                iframe: 'https://editor.p5js.org/lulzie/full/ewt7yw0qS',
+              },
+            ],
+          },
+        ];
 
-      createApp(app).mount("#app");
-    </script>
-  </body>
+        let count = 0;
+        days = days.reverse();
+
+        for (const day of days) {
+          day.examples = day.examples.reverse();
+        }
+
+        let activeFrame = null;
+
+        return {days, activeFrame};
+      },
+      methods: {
+        loadIFrame(iframe) {
+          this.activeFrame = iframe;
+        },
+      },
+      components: {"day-component": DayComponent},
+      provide() {
+        return {
+          activeFrame: Vue.computed(() => this.activeFrame),
+        };
+      },
+    };
+
+    createApp(app).mount("#app");
+  </script>
+</body>
+
 </html>
