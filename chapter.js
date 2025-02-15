@@ -18,8 +18,12 @@ const ExampleCard = {
       <div v-if="!loaded" 
            class="flex flex-col items-center justify-center border-2 border-dashed border-gray-300 rounded-2xl p-4 cursor-pointer hover:bg-gray-50"
            @click="loadIframe">
-        <h3 class="text-xl font-semibold mb-2">{{ example.name }}</h3>
-        <p class="text-sm text-gray-500">Click to load example</p>
+        <div class="mb-2">
+          <h3 class="text-xl font-semibold mb-1">{{ example.name }}</h3>
+          <p v-if="example.description" class="text-sm text-gray-500 tracking-wide">{{ example.description }}</p>
+        </div>
+
+        <p class="text-sm text-gray-500 tracking-wide">Click to load example</p>
       </div>
       <iframe v-else
               class="w-full border rounded-2xl"
